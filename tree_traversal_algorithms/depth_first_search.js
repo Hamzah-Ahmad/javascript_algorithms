@@ -1,6 +1,7 @@
 // DFS: Traverses nodes vertically down to the end of ther tree, before visiting sibling nodes
 
 //DFS Pre-Order: In pre-order, we visit the node, and then the node's entire left side, and then it's entire right side.
+//DFS PostOrder: In Post Order, we visit a node AFTER we have visited the left and the right side of the node.
 
 class Node {
     constructor(value) {
@@ -61,6 +62,16 @@ class BST {
             results.push(currentNode.value)
             if(currentNode.left) traverse(currentNode.left)
             if(currentNode.right) traverse(currentNode.right)
+        }
+        traverse(this.root)
+        return results
+    }
+    DFSPostOrder() {
+        let results = []
+        function traverse(currentNode) {
+            if(currentNode.left) traverse(currentNode.left)
+            if(currentNode.right) traverse(currentNode.right)
+            results.push(currentNode.value)
         }
         traverse(this.root)
         return results
